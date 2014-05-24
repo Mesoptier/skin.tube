@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include file="ViewTypeList.xml"/>
+    <include file="ViewTypePoster.xml"/>
+    <include file="ViewTypeFanart.xml"/>
+
+    <!-- Details -->
+    <variable name="ViewItemDetail">
+        <value condition="Container.Content(Episodes) + ListItem.Property(IsSpecial)">$INFO[ListItem.Episode]</value>
+        <value condition="Container.Content(Episodes) + !IntegerGreaterThan(ListItem.Episode, 9)">$INFO[ListItem.Season]x0$INFO[ListItem.Episode]</value>
+        <value condition="Container.Content(Episodes)">$INFO[ListItem.Season]x$INFO[ListItem.Episode]</value>
+        <value condition="Container.Content(Movies) | Container.Content(TvShows)">$INFO[ListItem.Year]</value>
+    </variable>
+
+    <variable name="ViewItemDetail2">
+        <!-- <value condition="Container.Content(Seasons)">$INFO[ListItem.Property(WatchedEpisodes)] [COLOR Tertiary]/[/COLOR] $INFO[ListItem.Property(TotalEpisodes)]</value> -->
+        <value condition="Container.Content(Seasons)">$INFO[ListItem.Property(TotalEpisodes)] EPISODES</value>
+        <value condition="Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)">$INFO[ListItem.Rating]</value>
+    </variable>
+
+    <!-- Title -->
+    <variable name="ViewItemTitle">
+        <value condition="Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)">$INFO[ListItem.Title]</value>
+    </variable>
+    <variable name="ViewItemTitleNoDetail">
+        <!-- Force an empty label for items with a detail -->
+        <value condition="Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)">$VAR[]</value>
+
+        <value condition="Container.Content(Seasons) + StringCompare(ListItem.Title, $LOCALIZE[20366])">All seasons</value>
+        <value condition="Container.Content(Seasons)">$INFO[ListItem.Title]</value>
+        <value>$INFO[ListItem.Label]</value>
+    </variable>
+
+    <!-- Active overlay -->
+    <include name="ActiveOverlay">
+        <control type="image">
+            <top>-10</top>
+            <bottom>-10</bottom>
+            <left>-10</left>
+            <right>-10</right>
+
+            <texture border="10">active-overlay.png</texture>
+            
+            <animation type="Focus" reversible="false">
+                <include>ActiveOverlayAnimation</include>
+            </animation>
+        </control>
+    </include>
+
+    <include name="ActiveOverlayAnimation">
+        <effect type="Zoom" start="95" end="100" time="200" center="auto" tween="cubic"/>
+        <effect type="Fade" start="0" end="100" time="150"/>
+    </include>
+
+    <include name="ImageOverlay">
+        <control type="image">
+            <top>-10</top>
+            <bottom>-10</bottom>
+            <left>-10</left>
+            <right>-10</right>
+
+            <texture border="15">image-overlay.png</texture>
+        </control>
+    </include>
+
+    <include name="ItemBadge">
+        <control type="group">
+            <top>0</top>
+            <right>0</right>
+            <width>60</width>
+            <height>60</height>
+
+            <include>ItemBadgeVisibility</include>
+
+            <control type="image">
+                <left>-2</left>
+                <bottom>-2</bottom>
+                <include>FillParent</include>
+
+                <texture colordiffuse="GlobalBackground">badge-corner.png</texture>
+            </control>
+
+            <control type="image">
+                <include>FillParent</include>
+
+                <texture>badge-corner.png</texture>
+                <colordiffuse>BadgeBackground</colordiffuse>
+
+                <visible>!ListItem.IsPlaying</visible>
+            </control>
+            <control type="image">
+                <include>FillParent</include>
+
+                <texture>badge-corner.png</texture>
+                <colordiffuse>BadgePlayingBackground</colordiffuse>
+
+                <visible>ListItem.IsPlaying</visible>
+            </control>
+
+            <control type="image">
+                <top>10</top>
+                <right>10</right>
+                <width>16</width>
+                <height>16</height>
+
+                <texture colordiffuse="BadgeIcon">$VAR[ItemBadgeIcon]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="ItemBadgeVisibility">
+        <visible>ListItem.IsResumable | SubString(ListItem.Overlay, OverlayUnwatched) | IntegerGreaterThan(ListItem.Property(UnWatchedEpisodes), 0) | ListItem.IsPlaying</visible>
+    </include>
+
+    <variable name="ItemBadgeIcon">
+        <value condition="ListItem.IsPlaying">icon-playing.png</value>
+        <value condition="ListItem.IsResumable">icon-partwatched.png</value>
+        <value condition="SubString(ListItem.Overlay, OverlayUnwatched) | IntegerGreaterThan(ListItem.Property(UnWatchedEpisodes), 0)">icon-unwatched.png</value>
+    </variable>
+    
+    <include name="DefaultImage">
+        <control type="image">
+            <include>FillParent</include>
+            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+        </control>
+    </include>
+
+    <!-- Controls the visibility of the scrollbar, from Black's Experience1080 -->
+    <include name="ViewScrollbarVisibility">
+        <control type="image" id="601">
+            <animation effect="fade" start="100" end="0" time="0" delay="1500" condition="!Window.Previous(FullscreenVideo)">WindowOpen</animation>
+        </control>
+        <control type="image" id="602">
+            <animation effect="fade" start="0" end="100" time="0">Visible</animation>
+            <animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+            <visible>Control.HasFocus(70) | !Control.IsVisible(601)</visible>
+        </control>
+        <control type="image" id="602">
+            <animation effect="fade" start="0" end="100" time="0">Visible</animation>
+            <animation effect="fade" start="100" end="0" time="0" delay="1500">Hidden</animation>
+            <visible>!Control.HasFocus(70) + [Container.Scrolling | Container.OnScrollNext | Container.OnScrollPrevious]</visible>
+        </control>
+    </include>
+    
+    <include name="ViewTypeCommon">
+        <pagecontrol>600</pagecontrol>
+
+        <orientation>horizontal</orientation>
+        <preloaditems>2</preloaditems>
+    </include>
+
+    <include name="ViewTypeHorizontal">
+        <include>ViewTypeCommon</include>
+
+        <onup condition="!Skin.HasSetting(KioskMode)">3002</onup>
+        <onup condition="Skin.HasSetting(KioskMode) + Control.IsVisible(600)">600</onup>
+        <ondown condition="Control.IsVisible(600)">600</ondown>
+        <ondown condition="!Skin.HasSetting(KioskMode) + !Control.IsVisible(600)">3002</ondown>
+    </include>
+
+    <include name="ViewScrollbarHorizontal">
+        <control type="scrollbar" id="600">
+            <top>850</top>
+            <width>1720</width>
+
+            <onup>500</onup>
+            <ondown condition="!Skin.HasSetting(KioskMode)">3002</ondown>
+            <ondown condition="Skin.HasSetting(KioskMode)">500</ondown>
+
+            <orientation>horizontal</orientation>
+            <showonepage>false</showonepage>
+
+            <animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="out" condition="!Control.IsVisible(602) + !Control.HasFocus(600)">Conditional</animation>
+        </control>
+    </include>
+
+</includes>

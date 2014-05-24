@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    
+    <!-- Title -->
+    <variable name="Title">
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(Movies) + SubString(Container.FolderPath, setid)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(Movies)">Movies</value>
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(TvShows)">TV shows</value>
+        <value condition="Window.IsActive(VideoLibrary) + [Container.Content(Seasons) | Container.Content(Episodes)]">$INFO[ListItem.TVShowTitle]</value>
+        <value>$INFO[Container.FolderName]</value>
+    </variable>
+    
+    <!-- Secondary title -->
+    <variable name="TitleSecondary">
+        <!-- Flattened season, could possibly also be checked by comparing FolderPath with "-2" -->
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(Episodes) + StringCompare(Container.FolderName, ListItem.TvShowTitle)">$VAR[]</value>
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(Episodes) + StringCompare(Container.FolderName, $LOCALIZE[20366])">All seasons</value>
+        <value condition="Window.IsActive(VideoLibrary) + Container.Content(Episodes)">$INFO[Container.FolderName]</value>
+    </variable>
+
+    <!-- Player -->
+    <variable name="PlayerTitle">
+        <value condition="VideoPlayer.Content(Movies)">$INFO[VideoPlayer.Title]</value>
+        <value condition="VideoPlayer.Content(Episodes)">$INFO[VideoPlayer.TvShowTitle]</value>
+    </variable>
+    <variable name="PlayerDetail">
+        <value condition="VideoPlayer.Content(Movies)">$INFO[VideoPlayer.Year] [COLOR PlayerSeparator]·[/COLOR] $INFO[VideoPlayer.Genre]</value>
+        <value condition="VideoPlayer.Content(Episodes) + SubString(VideoPlayer.Episode,S,Left)">$INFO[VideoPlayer.Episode] [COLOR PlayerSeparator]·[/COLOR] $INFO[VideoPlayer.Title]</value>
+        <value condition="VideoPlayer.Content(Episodes) + !IntegerGreaterThan(VideoPlayer.Episode, 9)">$INFO[VideoPlayer.Season]x0$INFO[VideoPlayer.Episode] [COLOR PlayerSeparator]·[/COLOR] $INFO[VideoPlayer.Title]</value>
+        <value condition="VideoPlayer.Content(Episodes)">$INFO[VideoPlayer.Season]x$INFO[VideoPlayer.Episode] [COLOR PlayerSeparator]·[/COLOR] $INFO[VideoPlayer.Title]</value>
+    </variable>
+
+    <variable name="PlayerTime">
+        <value condition="StringCompare(VideoPlayer.Duration(h), 0)">$INFO[VideoPlayer.Time(mm:ss)]</value>
+        <value>$INFO[VideoPlayer.Time(h:mm:ss)]</value>
+    </variable>
+
+    <variable name="PlayerDuration">
+        <value condition="StringCompare(VideoPlayer.Duration(h), 0)">$INFO[VideoPlayer.Duration(mm:ss)]</value>
+        <value>$INFO[VideoPlayer.Duration(h:mm:ss)]</value>
+    </variable>
+
+</includes>

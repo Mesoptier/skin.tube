@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="153">
+    <onload>Control.SetFocus(150)</onload>
+    <onload>Select</onload>
+
+    <controls>
+        <include>DialogBackground</include>
+
+        <!-- Subtitles -->
+        <control type="group">
+            <include>DialogAnimations</include>
+
+            <control type="button" id="155">
+                <onfocus>Control.SetFocus(150)</onfocus>
+                <onfocus>Up</onfocus>
+                <onfocus>Select</onfocus>
+                <onfocus>Control.SetFocus(158)</onfocus>
+            </control>
+
+            <control type="button" id="156">
+                <onfocus>Control.SetFocus(150)</onfocus>
+                <onfocus>Down</onfocus>
+                <onfocus>Select</onfocus>
+                <onfocus>Control.SetFocus(158)</onfocus>
+            </control>
+
+            <control type="button" id="158">
+                <onleft>155</onleft>
+                <onright>156</onright>
+            </control>
+
+            <control type="list" id="150">
+                <itemlayout></itemlayout>
+                <focusedlayout></focusedlayout>
+            </control>
+
+            <!-- Actual menu -->
+            <control type="grouplist">
+                <width>780</width>
+                <include>DialogContents</include>
+
+                <!-- Title -->
+                <control type="grouplist">
+                    <height>30</height>
+
+                    <orientation>horizontal</orientation>
+                    <align>center</align>
+
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>20</itemgap>
+
+                    <!-- Previous -->
+                    <control type="image">
+                        <top>7</top>
+                        <width>10</width>
+                        <height>20</height>
+
+                        <texture flipx="true">menu-next.png</texture>
+                    
+                        <animation type="Conditional" condition="!Container(150).OnPrevious" reversible="false">
+                            <effect type="Slide" end="-4,0" time="50"/>
+                            <effect type="Slide" end="4,0" time="250" delay="50" tween="cubic"/>
+                        </animation>
+                    </control>
+                    
+                    <control type="label" id="100">
+                        <width>auto</width>
+
+                        <include>DialogTitle</include>
+                        <label>-</label>
+                    </control>
+
+                    <!-- Next -->
+                    <control type="image">
+                        <top>7</top>
+                        <width>10</width>
+                        <height>20</height>
+
+                        <texture>menu-next.png</texture>
+
+                        <animation type="Conditional" condition="!Container(150).OnNext" reversible="false">
+                            <effect type="Slide" end="4,0" time="50"/>
+                            <effect type="Slide" end="-4,0" time="250" delay="50" tween="cubic"/>
+                        </animation>
+                    </control>
+                </control>
+
+                <!-- Content (Loading / List) -->
+                <control type="group">
+                    <top>10</top>
+                    <width>780</width>
+                    <height>480</height>
+
+                    <!-- Loading -->
+                    <control type="group">
+                        <width>780</width>
+                        <height>480</height>
+
+                        <animation type="Visible">
+                            <effect type="Fade" start="0" end="100" time="300" tween="cubic" easing="out" delay="150"/>
+                        </animation>
+                        <animation type="Hidden">
+                            <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+                        </animation>
+
+                        <visible>!ControlGroup(122).HasFocus</visible>
+
+                        <control type="label">
+                            <centertop>50%</centertop>
+                            <textcolor>Secondary</textcolor>
+
+                            <include>DialogTitle</include>
+                            <label>Loading...</label>
+                        </control>
+                    </control>
+
+                    <!-- List -->
+                    <control type="group" id="122">
+                        <visible allowhiddenfocus="true">ControlGroup(122).HasFocus</visible>
+
+                        <animation type="Visible">
+                            <effect type="Fade" start="0" end="100" time="300" tween="cubic" easing="out" delay="150"/>
+                        </animation>
+
+                        <control type="scrollbar" id="121">
+                            <top>10</top>
+                            <left>760</left>
+                            <height>460</height>
+                            
+                            <onleft>120</onleft>
+                            <onright>156</onright>
+
+                            <showonepage>false</showonepage>
+                        </control>
+
+                        <control type="list" id="120">
+                            <width>780</width>
+                            <height>480</height>
+
+                            <onleft>155</onleft>
+                            <onright>156<!-- 121 --></onright>
+
+                            <pagecontrol>121</pagecontrol>
+
+                            <itemlayout width="780" height="80">
+                                <control type="group">
+                                    <left>40</left>
+                                    <width>700</width>
+                                    <top>10</top>
+                                    <height>60</height>
+
+                                    <!-- Label -->
+                                    <control type="group">
+                                        <right>180</right>
+
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
+
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Primary</textcolor>
+
+                                            <label>$INFO[ListItem.Label2]</label>
+                                        </control>
+                                    </control>
+
+                                    <!-- Details -->
+                                    <control type="group">
+                                        <right>0</right>
+                                        <width>180</width>
+
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>136r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <label>$INFO[ListItem.Thumb]</label>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>92r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <animation condition="!ListItem.Property(hearing_imp)" effect="Fade" start="100" end="10" time="0">Conditional</animation>
+
+                                            <label>CC</label>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>20r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <animation condition="!ListItem.Property(sync)" effect="Fade" start="100" end="10" time="0">Conditional</animation>
+
+                                            <label>Sync</label>
+                                        </control>
+                                    </control>
+                                </control>
+                            </itemlayout>
+                            <focusedlayout height="80">
+                                <control type="group">
+                                    <left>40</left>
+                                    <width>700</width>
+                                    <top>10</top>
+                                    <height>60</height>
+
+                                    <include>ActiveOverlay</include>
+
+                                    <!-- Label -->
+                                    <control type="group">
+                                        <right>180</right>
+
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
+
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Primary</textcolor>
+
+                                            <label>$INFO[ListItem.Label2]</label>
+                                        </control>
+                                    </control>
+
+                                    <!-- Details -->
+                                    <control type="group">
+                                        <right>0</right>
+                                        <width>180</width>
+
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>136r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <label>$INFO[ListItem.Thumb]</label>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>92r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <animation condition="!ListItem.Property(hearing_imp)" effect="Fade" start="100" end="10" time="0">Conditional</animation>
+
+                                            <label>CC</label>
+                                        </control>
+
+                                        <control type="label">
+                                            <top>12</top>
+                                            <posx>20r</posx>
+                                            <width>100</width>
+                                            <align>right</align>
+
+                                            <font>MenuItemLabel</font>
+                                            <textcolor>Secondary</textcolor>
+
+                                            <animation condition="!ListItem.Property(sync)" effect="Fade" start="100" end="10" time="0">Conditional</animation>
+
+                                            <label>Sync</label>
+                                        </control>
+                                    </control>
+                                </control>
+                            </focusedlayout>
+                        </control>
+                    </control>
+
+                </control>
+
+            </control>
+
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="0">
+    <defaultcontrol always="true">300</defaultcontrol>
+
+    <controls>
+
+        <include>GlobalBackground</include>
+        <include>GlobalTime</include>
+
+        <!-- Content -->
+        <control type="group">
+            <include>ContentCommon</include>
+
+            <!-- Animations -->
+            <animation type="WindowOpen">
+                <include>WindowOpenBackwards</include>
+            </animation>
+            <animation type="WindowClose">
+                <include>WindowCloseForwards</include>
+            </animation>
+
+            <!-- Content -->
+            <control type="grouplist">
+                <centertop>50%</centertop>
+                <height>64</height>
+
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <itemgap>80</itemgap>
+
+                <!-- Labels for hidden controls (#300) -->
+                <control type="label">
+                    <width>auto</width>
+
+                    <font>WindowTitle</font>
+                    <textcolor>Primary</textcolor>
+
+                    <label>$INFO[Control.GetLabel(1)]</label>
+                    <animation condition="!Control.HasFocus(1)" effect="Fade" time="50" start="100" end="40">Conditional</animation>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+
+                    <font>WindowTitle</font>
+                    <textcolor>Primary</textcolor>
+
+                    <label>$INFO[Control.GetLabel(2)]</label>
+                    <animation condition="!Control.HasFocus(2)" effect="Fade" time="50" start="100" end="40">Conditional</animation>
+                </control>
+
+            </control>
+
+            <!-- Hidden controls -->
+            <control type="grouplist" id="300">
+                <orientation>horizontal</orientation>
+
+                <control type="button" id="1">
+                    <label>Movies</label>
+                    <onclick>ActivateWindow(Videos, MovieTitles, return)</onclick>
+                </control>
+                <control type="button" id="2">
+                    <label>TV shows</label>
+                    <onclick>ActivateWindow(Videos, TvShowTitles, return)</onclick>
+                </control>
+            </control>
+
+        </control>
+
+    </controls>
+</window>

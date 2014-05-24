@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="2003" type="dialog">
+    <controls>
+
+        <!-- Title -->
+        <control type="label">
+            <top>75</top>
+            <left>100</left>
+            <width>auto</width>
+
+            <textcolor>Primary</textcolor>
+            <font>WindowTitle</font>
+
+            <label>$INFO[ListItem.Title]</label>
+
+            <animation type="WindowOpen">
+                <effect type="Fade" start="0" end="100" time="300" tween="cubic" delay="150"/>
+            </animation>
+            <animation type="WindowClose">
+                <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+            </animation>
+        </control>
+
+        <!-- Content -->
+        <control type="group">
+
+            <!-- Animations -->
+            <animation type="WindowOpen">
+                <include>WindowOpenForwardsDelayed</include>
+            </animation>
+            <animation type="WindowClose">
+                <include>WindowCloseBackwards</include>
+            </animation>
+
+            <control type="image">
+                <top>160</top>
+                <bottom>90</bottom>
+                <left>100</left>
+                <right>100</right>
+
+                <texture>solid.png</texture>
+            </control>
+
+            <!-- Menu overlay -->
+            <control type="image">
+                <include>FillParent</include>
+
+                <texture colordiffuse="GlobalBackground">solid.png</texture>
+
+                <animation effect="Fade" start="0" end="99" time="200" tween="cubic" easing="out">Visible</animation>
+                <animation effect="Fade" start="99" end="0" time="150" delay="50" tween="cubic" easing="in">Hidden</animation>
+
+                <visible>ControlGroup(3000).HasFocus</visible>
+            </control>
+
+            <!-- View options -->
+            <control type="group" id="3000">
+                <visible allowhiddenfocus="true">ControlGroup(3000).HasFocus</visible>
+
+                <animation type="Visible">
+                    <include>WindowOpenForwards</include>
+                </animation>
+                <animation type="Hidden">
+                    <include>WindowCloseBackwards</include>
+                </animation>
+
+                <control type="button" id="3002">
+                    <onfocus condition="Control.IsVisible(3000)">Control.SetFocus(500)</onfocus>
+                    <onfocus condition="!Control.IsVisible(3000)">Control.SetFocus(3001)</onfocus>
+                </control>
+
+                <!-- Controls -->
+                <control type="grouplist" id="3001">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>420</width>
+                    <align>center</align>
+
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+
+                    <!-- Title -->
+                    <control type="label">
+                        <height>30</height>
+
+                        <font>MenuTitle</font>
+                        <textcolor>Primary</textcolor>
+
+                        <align>center</align>
+
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+
+                    <!-- Play -->
+                    <control type="group" id="3010">
+                        <top>20</top>
+                        <centerleft>50%</centerleft>
+                        <width>340</width>
+                        <height>60</height>
+
+                        <control type="group">
+                            <visible>ControlGroup(3010).HasFocus</visible>
+                            
+                            <animation type="Visible" reversible="false">
+                                <include>ActiveOverlayAnimation</include>
+                            </animation>
+
+                            <include>ActiveOverlay</include>
+                        </control>
+
+                        <!-- Button -->
+                        <control type="button" id="8">
+                            <onup>3002</onup>
+                            <ondown>3020</ondown>
+
+                            <align>center</align>
+                            <textoffsety>13</textoffsety>
+
+                            <font>MenuItemLabel</font>
+                            <textcolor>Primary</textcolor>
+
+                            <texturenofocus colordiffuse="BackgroundPrimary">solid.png</texturenofocus>
+                            <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
+
+                            <label>Play</label>
+                        </control>
+                    </control>
+
+                    <!-- Choose art -->
+                    <control type="group" id="3020">
+                        <top>20</top>
+                        <centerleft>50%</centerleft>
+                        <width>340</width>
+                        <height>60</height>
+
+                        <control type="group">
+                            <visible>ControlGroup(3020).HasFocus</visible>
+                            
+                            <animation type="Visible" reversible="false">
+                                <include>ActiveOverlayAnimation</include>
+                            </animation>
+
+                            <include>ActiveOverlay</include>
+                        </control>
+
+                        <!-- Button -->
+                        <control type="button" id="10">
+                            <onup>3010</onup>
+                            <ondown>3030</ondown>
+
+                            <align>center</align>
+                            <textoffsety>13</textoffsety>
+
+                            <font>MenuItemLabel</font>
+                            <textcolor>Primary</textcolor>
+
+                            <texturenofocus colordiffuse="BackgroundPrimary">solid.png</texturenofocus>
+                            <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
+
+                            <label>Choose art</label>
+                        </control>
+                    </control>
+                </control>
+            
+            </control>
+
+        </control>
+    </controls>
+</window>

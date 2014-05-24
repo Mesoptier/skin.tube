@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fonts>
+    <fontset id="default" unicode="true">
+
+        <!-- Debug font -->
+        <font>
+            <name>font13</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>30</size>
+        </font>
+
+        <!-- Skin fonts -->
+        <font>
+            <name>WindowTitle</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>48</size>
+        </font>
+
+        <font>
+            <name>WindowTitleSecondary</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>32</size>
+        </font>
+
+        <font>
+            <name>WindowTitleTertiary</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>22</size>
+        </font>
+
+        <font>
+            <name>ItemTitle</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>24</size>
+        </font>
+
+        <font>
+            <name>ItemTitleSecondary</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>24</size>
+        </font>
+
+        <font>
+            <name>ItemDescription</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>18</size>
+        </font>
+
+        <font>
+            <name>ItemTag</name>
+            <filename>Roboto-Bold.ttf</filename>
+            <size>24</size>
+            <style>uppercase</style>
+        </font>
+
+        <!-- Menus -->
+        <font>
+            <name>MenuTitle</name>
+            <filename>Roboto-Bold.ttf</filename>
+            <size>24</size>
+            <style>uppercase</style>
+        </font>
+        <font>
+            <name>MenuDescription</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>20</size>
+        </font>
+        <font>
+            <name>MenuItemLabel</name>
+            <filename>RobotoCondensed-Bold.ttf</filename>
+            <size>24</size>
+            <style>uppercase</style>
+        </font>
+        <font>
+            <name>MenuItemValue</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>24</size>
+        </font>
+
+        <!-- Player -->
+        <font>
+            <name>PlayerTitle</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>32</size>
+        </font>
+        <font>
+            <name>PlayerDetail</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>22</size>
+        </font>
+        <font>
+            <name>PlayerSeparator</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>20</size>
+        </font>
+
+    </fontset>
+</fonts>

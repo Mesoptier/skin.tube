@@ -1,0 +1,448 @@
+<window>
+    <controls>
+        <include>DialogBackground</include>
+
+        <control type="group">
+            <include>DialogAnimations</include>
+
+            <control type="label" id="10011"></control>
+
+            <control type="grouplist">
+                <width>1000</width>
+                <itemgap>20</itemgap>
+
+                <include>DialogContents</include>
+
+                <!-- Title -->
+                <control type="label" id="10012">
+                    <include>DialogTitle</include>
+                    <label></label>
+                </control>
+
+                <!-- Simple -->
+                <control type="group" id="10014">
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
+
+                        <itemgap>40</itemgap>
+
+                        <control type="button" id="10030">
+                            <width>70</width>
+                            <height>70</height>
+
+                            <texturenofocus flipy="true">rating-heart.png</texturenofocus>
+                            <texturefocus flipy="true">rating-heart.png</texturefocus>
+
+                            <colordiffuse>FF808080</colordiffuse>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(10030)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="button" id="10031">
+                            <width>70</width>
+                            <height>70</height>
+
+                            <texturenofocus>rating-heart.png</texturenofocus>
+                            <texturefocus>rating-heart.png</texturefocus>
+
+                            <colordiffuse>FFE72B2B</colordiffuse>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(10031)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                    </control>
+                </control>
+
+                <!-- Advanced -->
+                <control type="group" id="10015">
+                    <height>70</height>
+
+                    <control type="grouplist">
+                        <height>80</height>
+
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
+                        <itemgap>20</itemgap>
+
+                        <control type="group">
+                            <control type="button" id="11030">
+                                <onleft>-</onleft>
+                                <onright>11031</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11030)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FF808080</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11030) | Control.HasFocus(11031) | Control.HasFocus(11032) | Control.HasFocus(11033) | Control.HasFocus(11034) | Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11031">
+                                <onleft>11030</onleft>
+                                <onright>11032</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11031)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FF8B7E7E</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11031) | Control.HasFocus(11032) | Control.HasFocus(11033) | Control.HasFocus(11034) | Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11032">
+                                <onleft>11031</onleft>
+                                <onright>11033</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11032)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FF967B7B</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11032) | Control.HasFocus(11033) | Control.HasFocus(11034) | Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11033">
+                                <onleft>11032</onleft>
+                                <onright>11034</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11033)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFA27676</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11033) | Control.HasFocus(11034) | Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11034">
+                                <onleft>11033</onleft>
+                                <onright>11035</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11034)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFAD6E6E</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11034) | Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11035">
+                                <onleft>11034</onleft>
+                                <onright>11036</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11035)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFB96565</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11035) | Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11036">
+                                <onleft>11035</onleft>
+                                <onright>11037</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11036)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFC45959</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11036) | Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11037">
+                                <onleft>11036</onleft>
+                                <onright>11038</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11037)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFD04C4C</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11037) | Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11038">
+                                <onleft>11037</onleft>
+                                <onright>11039</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11038)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFDB3C3C</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11038) | Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                        <control type="group">
+                            <control type="button" id="11039">
+                                <onleft>11038</onleft>
+                                <onright>-</onright>
+                            </control>
+
+                            <top>10</top>
+                            <width>60</width>
+                            <height>60</height>
+
+                            <control type="group">
+                                <visible>Control.HasFocus(11039)</visible>
+                            
+                                <animation type="Visible" reversible="false">
+                                    <include>ActiveOverlayAnimation</include>
+                                </animation>
+
+                                <include>ActiveOverlay</include>
+                            </control>
+
+                            <control type="image">
+                                <texture>solid.png</texture>
+                                <colordiffuse>BackgroundPrimary</colordiffuse>
+                            </control>
+    
+                            <control type="image">
+                                <colordiffuse>FFE72B2B</colordiffuse>
+                                <texture>rating-heart.png</texture>
+                                <aspectratio>center</aspectratio>
+                            </control>
+
+                            <animation type="Conditional" condition="![Control.HasFocus(11039)]">
+                                <effect type="Fade" start="100" end="35"/>
+                            </animation>
+                        </control>
+
+                    </control>
+                </control>
+
+                <!-- Rating title -->
+                <control type="label" id="10013">
+                    <textcolor>Secondary</textcolor>
+                    <include>DialogTitle</include>
+                    <label></label>
+                </control>
+
+            </control>
+
+        </control>
+
+    </controls>
+</window>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <variable name="ViewTypeFanartImage">
+        <value condition="Container.Content(Episodes)">$INFO[ListItem.Art(thumb)]</value>
+        <value>$INFO[ListItem.Art(fanart)]</value>
+    </variable>
+
+    <include name="ViewTypeFanartItem">
+        <top>10</top>
+        <bottom>10</bottom>
+        <left>140</left>
+        <right>-120</right>
+
+        <!-- Image -->
+        <control type="group">
+            <width>415</width>
+            <height>230</height>
+
+            <include>DefaultImage</include>
+
+            <control type="image">
+                <include>FillParent</include>
+
+                <fadetime>200</fadetime>
+                <aspectratio>scale</aspectratio>
+                <texture>$VAR[ViewTypeFanartImage]</texture>
+            </control>
+            
+            <include>ImageOverlay</include>
+
+            <include>ItemBadge</include>
+        </control>
+
+        <!-- Title -->
+        <control type="group">
+            <top>230</top>
+            <height>55</height>
+            <include>FillParent</include>
+
+            <control type="image">
+                <include>FillParent</include>
+                <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+            </control>
+            
+            <control type="group">
+                <top>11</top>
+                <left>20</left>
+                <right>20</right>
+
+                <!-- Detail -->
+                <control type="label">
+                    <left>20</left>
+                    <width>80</width>
+
+                    <align>center</align>
+
+                    <font>ItemTitleSecondary</font>
+                    <textcolor>Secondary</textcolor>
+                    <selectedcolor>Secondary</selectedcolor>
+
+                    <label>$VAR[ViewItemDetail]</label>
+                </control>
+
+                <!-- Title -->
+                <control type="label">
+                    <left>60</left>
+                    <right>40</right>
+
+                    <font>ItemTitle</font>
+                    <textcolor>Primary</textcolor>
+                    <selectedcolor>Primary</selectedcolor>
+                    
+                    <label>$VAR[ViewItemTitle]</label>
+                </control>
+                <control type="label">
+                    <right>40</right>
+
+                    <font>ItemTitle</font>
+                    <textcolor>Primary</textcolor>
+                    <selectedcolor>Primary</selectedcolor>
+                    
+                    <label>$VAR[ViewItemTitleNoDetail]</label>
+                </control>
+
+                <!-- Detail 2 -->
+                <control type="label">
+                    <width>200</width>
+                    <right>-200</right>
+
+                    <align>right</align>
+
+                    <font>ItemTitleSecondary</font>
+                    <textcolor>Secondary</textcolor>
+                    <selectedcolor>Secondary</selectedcolor>
+
+                    <label>$VAR[ViewItemDetail2]</label>
+                </control>
+
+            </control>
+        </control>
+    </include>
+
+    <!-- The only reason for these separate description includes, is for the active description to scroll. Please improve if possible. -->
+
+    <!-- Common description tags -->
+    <include name="ViewTypeFanartDescriptionCommon">
+        <top>285</top>
+        <include>FillParent</include>
+
+        <control type="image">
+            <include>FillParent</include>
+            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+        </control>
+
+        <!-- Collection tag -->
+        <control type="label">
+            <top>44</top>
+            <left>50%</left>
+
+            <visible>SubString(ListItem.Path, setid)</visible>
+
+            <align>center</align>
+            <textcolor>Secondary</textcolor>
+            <selectedcolor>Secondary</selectedcolor>
+            <font>ItemTag</font>
+
+            <label>Collection</label>
+        </control>
+
+        <!-- Spoiler tag -->
+        <control type="label">
+            <top>44</top>
+            <left>50%</left>
+
+            <visible>SubString(ListItem.Plot,$LOCALIZE[20370]) + !SubString(ListItem.Path, setid)</visible>
+
+            <align>center</align>
+            <textcolor>Tertiary</textcolor>
+            <selectedcolor>Tertiary</selectedcolor>
+            <font>ItemTag</font>
+
+            <label>Spoiler</label>
+        </control>
+    </include>
+
+    <!-- Description -->
+    <include name="ViewTypeFanartDescription">
+        <control type="group">
+            <include>ViewTypeFanartDescriptionCommon</include>
+            
+            <!-- Description -->
+            <control type="textbox">
+                <top>-16</top>
+                <bottom>8</bottom>
+                <left>20</left>
+                <right>20</right>
+
+                <visible>![SubString(ListItem.Plot,$LOCALIZE[20370]) | SubString(ListItem.Path, setid)]</visible>
+
+                <textcolor>Secondary</textcolor>
+                <font>ItemDescription</font>
+
+                <label>[CR]$INFO[ListItem.Plot]</label>
+            </control>
+        </control>
+    </include>
+
+    <!-- Description (Focused) -->
+    <include name="ViewTypeFanartDescriptionFocused">
+        <control type="group">
+            <include>ViewTypeFanartDescriptionCommon</include>
+
+            <!-- Description -->
+            <control type="textbox">
+                <top>-16</top>
+                <bottom>0</bottom>
+                <left>20</left>
+                <right>20</right>
+
+                <visible>!SubString(ListItem.Plot,$LOCALIZE[20370]) + !SubString(ListItem.Path, setid)</visible>
+
+                <autoscroll delay="1500" time="2000" repeat="3000">True</autoscroll>
+
+                <textcolor>Secondary</textcolor>
+                <font>ItemDescription</font>
+
+                <label>[CR]$INFO[ListItem.Plot]</label>
+            </control>
+
+            <control type="image">
+                <include>FillParent</include>
+                <texture colordiffuse="BackgroundSecondary" border="10">edge-fade.png</texture>
+
+                <visible>!SubString(ListItem.Plot,$LOCALIZE[20370]) + !SubString(ListItem.Path, setid)</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="ViewTypeFanart">
+        <control type="group">
+            <include>FillParent</include>
+
+            <visible>Control.IsVisible(502)</visible>
+        
+            <control type="panel" id="502">
+                <top>-10</top>
+                <bottom>-10</bottom>
+                <left>-140</left>
+                <right>-140</right>
+
+                <include>ViewTypeHorizontal</include>
+
+                <viewtype label="Fanart">wide</viewtype>
+                <visible>Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)</visible>
+
+                <itemlayout width="435" height="425">
+                    <control type="group">
+                        <include>ViewTypeFanartDescription</include>
+                        <include>ViewTypeFanartItem</include>
+                    </control>
+                </itemlayout>
+
+                <focusedlayout width="435" height="425">
+                    <control type="group">
+                        <!-- Active overlay -->
+                        <include>ActiveOverlay</include>
+
+                        <include>ViewTypeFanartDescriptionFocused</include>
+                        <include>ViewTypeFanartItem</include>
+                    </control>
+                </focusedlayout>
+            </control>
+
+            <include>ViewScrollbarHorizontal</include>
+
+        </control>
+
+    </include>
+
+</includes>

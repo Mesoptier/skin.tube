@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include file="Variables.xml"/>
+    <include file="Defaults.xml"/>
+    <include file="ViewTypes.xml"/>
+
+    <include name="GlobalBackground">
+        <control type="videowindow">
+            <top>0</top>
+            <bottom>0</bottom>
+            <left>0</left>
+            <right>0</right>
+        </control>
+
+        <control type="image">
+            <top>0</top>
+            <bottom>0</bottom>
+            <left>0</left>
+            <right>0</right>
+
+            <texture colordiffuse="GlobalBackground">solid.png</texture>
+
+            <animation effect="Fade" condition="Player.HasVideo" start="100" end="98" time="50">Conditional</animation>
+        </control>
+    </include>
+
+    <include name="GlobalTime">
+        <control type="grouplist">
+            <top>91</top>
+            <right>100</right>
+
+            <align>right</align>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+
+            <!-- <control type="image">
+                <width>16</width>
+                <height>16</height>
+                <top>18</top>
+
+                <visible>Player.HasMedia</visible>
+            
+                <texture colordiffuse="Secondary">icon-finish-time.png</texture>
+            </control> -->
+
+            <control type="label">
+                <left>5</left>
+                <width>auto</width>
+                <top>10</top>
+
+                <visible>Player.HasMedia</visible>
+
+                <textcolor>Secondary</textcolor>
+                <font>WindowTitleTertiary</font>
+
+                <label>$INFO[Player.FinishTime]</label>
+            </control>
+
+            <control type="label">
+                <left>10</left>
+                <width>auto</width>
+                <textcolor>Primary</textcolor>
+                <font>WindowTitleSecondary</font>
+
+                <label>$INFO[System.Time]</label>
+            </control>
+
+        </control>
+    </include>
+
+    <include name="ContentCommon">
+        <animation type="WindowOpen" condition="Window.Previous(FullscreenVideo)">
+            <include>WindowOpenForwards</include>
+        </animation>
+    </include>
+
+    <include name="WindowTitle">
+        <control type="grouplist">
+            <top>75</top>
+            <left>100</left>
+
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>30</itemgap>
+
+            <animation type="WindowOpen" condition="!Window.Previous(FullscreenVideo)">
+                <effect type="Fade" start="0" end="100" time="300" tween="cubic"/>
+            </animation>
+
+            <animation type="WindowClose">
+                <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+            </animation>
+
+            <animation type="Visible">
+                <effect type="Fade" start="0" end="100" time="300" tween="cubic"/>
+            </animation>
+            <animation type="Hidden">
+                <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+            </animation>
+
+            <visible>![Window.IsVisible(MovieInformation)]</visible>
+
+            <!-- Title -->
+            <control type="label">
+                <width>auto</width>
+
+                <textcolor>Primary</textcolor>
+                <font>WindowTitle</font>
+
+                <label>$VAR[Title]</label>
+            </control>
+
+            <!-- Secondary title -->
+            <control type="label">
+                <top>16</top>
+                <width>auto</width>
+
+                <textcolor>Secondary</textcolor>
+                <font>WindowTitleSecondary</font>
+
+                <label>$VAR[TitleSecondary]</label>
+            </control>
+        </control>
+    </include>
+
+    <!-- Window open/close animations -->
+    <include name="WindowOpenForwards">
+        <effect type="Fade" start="0" end="100" time="300" tween="cubic"/>
+        <effect type="Zoom" start="110" end="100" time="300" center="auto" tween="back"/>
+    </include>
+    <include name="WindowOpenForwardsDelayed">
+        <effect type="Fade" start="0" end="100" time="300" tween="cubic" delay="150"/>
+        <effect type="Zoom" start="110" end="100" time="300" center="auto" tween="back" delay="150"/>
+    </include>
+
+    <include name="WindowOpenBackwards">
+        <effect type="Fade" start="0" end="100" time="300" tween="cubic"/>
+        <effect type="Zoom" start="90" end="100" time="300" center="auto" tween="back"/>
+    </include>
+
+    <include name="WindowOpenBackwardsDelayed">
+        <effect type="Fade" start="0" end="100" time="300" tween="cubic" delay="150"/>
+        <effect type="Zoom" start="90" end="100" time="300" center="auto" tween="back" delay="150"/>
+    </include>
+
+    <include name="WindowCloseForwards">
+        <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+        <effect type="Zoom" start="100" end="90" time="150" center="auto" tween="cubic" easing="in"/>
+    </include>
+
+    <include name="WindowCloseBackwards">
+        <effect type="Fade" start="100" end="0" time="150" tween="cubic" easing="in"/>
+        <effect type="Zoom" start="100" end="110" time="150" center="auto" tween="cubic" easing="in"/>
+    </include>
+
+    <!-- Dialogs -->
+    <include name="DialogBackground">
+        <control type="image">
+            <include>FillParent</include>
+
+            <texture colordiffuse="DialogBackground">solid.png</texture>
+
+            <animation effect="Fade" start="0" end="100" time="200" tween="cubic" easing="out">WindowOpen</animation>
+            <animation effect="Fade" start="100" end="0" time="150" delay="50" tween="cubic" easing="in">WindowClose</animation>
+        </control>
+    </include>
+
+    <include name="DialogAnimations">
+        <animation type="WindowOpen">
+            <include>WindowOpenForwards</include>
+        </animation>
+        <animation type="WindowClose">
+            <include>WindowCloseBackwards</include>
+        </animation>
+    </include>
+
+    <include name="DialogContents">
+        <centertop>50%</centertop>
+        <centerleft>50%</centerleft>
+        <width>420</width>
+        <align>center</align>
+
+        <itemgap>0</itemgap>
+        <usecontrolcoords>true</usecontrolcoords>
+    </include>
+
+    <include name="DialogTitle">
+        <height>30</height>
+
+        <font>MenuTitle</font>
+        <textcolor>Primary</textcolor>
+
+        <align>center</align>
+    </include>
+
+    <include name="DialogButtonDimensions">
+        <top>20</top>
+        <centerleft>50%</centerleft>
+        <width>340</width>
+        <height>60</height>
+    </include>
+
+    <include name="DialogActiveButton">
+        <animation type="Visible" reversible="false">
+            <include>ActiveOverlayAnimation</include>
+        </animation>
+
+        <include>ActiveOverlay</include>
+    </include>
+
+    <!-- Scrollbar -->
+    <include name="Scrollbar">
+        <width>8</width>
+        <height>8</height>
+
+        <texturesliderbackground colordiffuse="26FFFFFF">solid.png</texturesliderbackground>
+        <texturesliderbar colordiffuse="80FFFFFF">solid.png</texturesliderbar>
+        <texturesliderbarfocus>solid.png</texturesliderbarfocus>
+    </include>
+
+    <!-- Dimensions -->
+    <include name="FillParent">
+        <top>0</top>
+        <bottom>0</bottom>
+        <left>0</left>
+        <right>0</right>
+    </include>
+
+    <include name="FillParent+10">
+        <top>10</top>
+        <bottom>10</bottom>
+        <left>10</left>
+        <right>10</right>
+    </include>
+
+    <!-- Player -->
+    <include name="PlayerButtonBackEffect">
+        <effect type="Fade" start="100" end="25" time="0"/>
+    </include>
+
+</includes>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    
+    <default type="label">
+        <scrollspeed>40</scrollspeed>
+        <scrollsuffix> - </scrollsuffix>
+    </default>
+
+    <default type="button">
+        <pulseonselect>false</pulseonselect>
+    </default>
+
+    <default type="togglebutton">
+        <pulseonselect>false</pulseonselect>
+    </default>
+
+    <default type="scrollbar">
+        <width>8</width>
+        <height>8</height>
+
+        <texturesliderbackground colordiffuse="1AFFFFFF">solid.png</texturesliderbackground>
+        <texturesliderbar colordiffuse="5AFFFFFF">solid.png</texturesliderbar>
+        <texturesliderbarfocus colordiffuse="B4FFFFFF">solid.png</texturesliderbarfocus>
+    </default>
+
+    <include name="DefaultScrollTime">
+        <scrolltime tween="cubic" easing="out">250</scrolltime>
+    </include>
+
+    <default type="list">
+        <include>DefaultScrollTime</include>
+    </default>
+
+    <default type="panel">
+        <include>DefaultScrollTime</include>
+    </default>
+
+</includes>

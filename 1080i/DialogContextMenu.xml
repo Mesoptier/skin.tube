@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="106">
+    <defaultcontrol always="true">1000</defaultcontrol>
+
+    <controls>
+        <include>DialogBackground</include>
+
+        <control type="group">
+            <include>DialogAnimations</include>
+
+            <!-- Adds the active overlay to generated buttons -->
+            <control type="grouplist">
+                <include>DialogContents</include>
+
+                <!-- Faux Title -->
+                <control type="label">
+                    <include>DialogTitle</include>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1001)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1001)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1002)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1002)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1003)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1003)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1004)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1004)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1005)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1005)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1006)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1006)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1007)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1007)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1008)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1008)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <include>DialogButtonDimensions</include>
+                    <visible>Control.IsVisible(1009)</visible>
+                    <control type="group">
+                        <visible>Control.HasFocus(1009)</visible>
+                        <include>DialogActiveButton</include>
+                    </control>
+                </control>
+            </control>
+
+            <control type="grouplist" id="996">
+                <include>DialogContents</include>
+
+                <!-- Title -->
+                <control type="label">
+                    <include>DialogTitle</include>
+                    <label>Context menu</label>
+                </control>
+
+                <!-- Button -->
+                <control type="button" id="1000">
+                    <include>DialogButtonDimensions</include>
+
+                    <align>center</align>
+                    <textoffsety>13</textoffsety>
+
+                    <font>MenuItemLabel</font>
+                    <textcolor>Primary</textcolor>
+
+                    <texturenofocus colordiffuse="BackgroundPrimary">solid.png</texturenofocus>
+                    <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
+                </control>
+
+            </control>
+        </control>
+
+    </controls>
+
+</window>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="ViewTypeListItem">
+        <top>10</top>
+        <bottom>10</bottom>
+        <left>140</left>
+        <right>-120</right>
+
+        <!-- Label -->
+        <control type="group">
+            <right>65</right>
+
+            <control type="image">
+                <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+            </control>
+            
+            <control type="group">
+                <top>15</top>
+                <left>20</left>
+                <right>20</right>
+
+                <!-- Detail -->
+                <control type="label">
+                    <left>20</left>
+                    <width>80</width>
+
+                    <align>center</align>
+
+                    <font>ItemTitleSecondary</font>
+                    <textcolor>Secondary</textcolor>
+                    <selectedcolor>Secondary</selectedcolor>
+
+                    <label>$VAR[ViewItemDetail]</label>
+                </control>
+
+                <!-- Title -->
+                <control type="label">
+                    <left>60</left>
+                    <right>40</right>
+
+                    <font>ItemTitle</font>
+                    <textcolor>Primary</textcolor>
+                    <selectedcolor>Primary</selectedcolor>
+
+                    <label>$VAR[ViewItemTitle]</label>
+                </control>
+                <control type="label">
+                    <right>40</right>
+
+                    <font>ItemTitle</font>
+                    <textcolor>Primary</textcolor>
+                    <selectedcolor>Primary</selectedcolor>
+
+                    <label>$VAR[ViewItemTitleNoDetail]</label>
+                </control>
+
+                <!-- Detail 2 -->
+                <control type="label">
+                    <width>200</width>
+                    <right>-200</right>
+
+                    <align>right</align>
+
+                    <font>ItemTitleSecondary</font>
+                    <textcolor>Secondary</textcolor>
+                    <selectedcolor>Secondary</selectedcolor>
+
+                    <label>$VAR[ViewItemDetail2]</label>
+                </control>
+            </control>
+        </control>
+
+        <!-- Watched badge -->
+        <control type="group">
+            <right>0</right>
+            <width>65</width>
+
+            <control type="image">
+                <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+            </control>
+
+            <!-- Actual badge -->
+            <control type="group">
+                <include>ItemBadgeVisibility</include>
+
+                <control type="image">
+                    <texture>solid.png</texture>
+                    <colordiffuse>BadgeBackground</colordiffuse>
+
+                    <visible>!ListItem.IsPlaying</visible>
+                </control>
+                <control type="image">
+                    <texture>solid.png</texture>
+                    <colordiffuse>BadgePlayingBackground</colordiffuse>
+
+                    <visible>ListItem.IsPlaying</visible>
+                </control>
+
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>17</width>
+                    <height>17</height>
+
+                    <texture colordiffuse="BadgeIcon">$VAR[ItemBadgeIcon]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="ViewTypeList">
+        <control type="group">
+            <include>FillParent</include>
+
+            <visible>Control.IsVisible(500)</visible>
+        
+            <control type="panel" id="500">
+                <top>-10</top>
+                <bottom>-10</bottom>
+                <left>-140</left>
+                <right>-140</right>
+
+                <include>ViewTypeHorizontal</include>
+
+                <viewtype label="List">list</viewtype>
+
+                <itemlayout width="580" height="85">
+                    <control type="group">
+                        <include>ViewTypeListItem</include>
+                    </control>
+                </itemlayout>
+
+                <focusedlayout width="580" height="85">
+                    <control type="group">
+                        <include>ActiveOverlay</include>
+                        <include>ViewTypeListItem</include>
+                    </control>
+                </focusedlayout>
+            </control>
+
+            <include>ViewScrollbarHorizontal</include>
+
+        </control>
+    </include>
+</includes>
