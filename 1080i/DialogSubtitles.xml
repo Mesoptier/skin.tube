@@ -2,6 +2,7 @@
 <window id="153">
     <onload>Control.SetFocus(150)</onload>
     <onload>Select</onload>
+    <onload>Control.SetFocus(158)</onload>
 
     <controls>
         <include>DialogBackground</include>
