@@ -236,7 +236,7 @@
                     </control>
 
                     <!-- Button -->
-                    <control type="button" id="18">
+                    <control type="togglebutton" id="18">
                         <onleft>17</onleft>
                         <onright>19</onright>
 
@@ -248,6 +248,10 @@
                         <texturefocus colordiffuse="PlayerButtonIconFocus">icon-subtitles.png</texturefocus>
                         <texturenofocus colordiffuse="PlayerButtonIcon">icon-subtitles.png</texturenofocus>
 
+                        <alttexturefocus colordiffuse="PlayerButtonIconFocus">icon-subtitles-active.png</alttexturefocus>
+                        <alttexturenofocus colordiffuse="PlayerButtonIcon">icon-subtitles-active.png</alttexturenofocus>
+
+                        <usealttexture>VideoPlayer.HasSubtitles</usealttexture>
                         <onclick>ActivateWindow(SubtitleSearch)</onclick>
                     </control>
                 </control>
