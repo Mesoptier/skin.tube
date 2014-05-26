@@ -11,6 +11,7 @@
     <color name="Primary">FFFFFFFF</color>
     <color name="Secondary">80FFFFFF</color>
     <color name="Tertiary">40FFFFFF</color>
+    <color name="Disabled">20FFFFFF</color>
 
     <!-- Badge -->
     <color name="BadgeBackground">FF2F62F4<!-- FF0576F0 --></color>
