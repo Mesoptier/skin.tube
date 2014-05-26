@@ -14,6 +14,14 @@
         <pulseonselect>false</pulseonselect>
     </default>
 
+    <default type="radiobutton">
+        <pulseonselect>false</pulseonselect>
+    </default>
+
+    <default type="spincontrolex">
+        <pulseonselect>false</pulseonselect>
+    </default>
+
     <default type="scrollbar">
         <width>8</width>
         <height>8</height>
@@ -32,6 +40,10 @@
     </default>
 
     <default type="panel">
+        <include>DefaultScrollTime</include>
+    </default>
+
+    <default type="grouplist">
         <include>DefaultScrollTime</include>
     </default>
 
