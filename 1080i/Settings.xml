@@ -10,11 +10,18 @@
             <include>ContentCommon</include>
 
             <!-- Animations -->
-            <animation type="WindowOpen">
+            <animation type="WindowOpen" condition="Window.Previous(Home)">
                 <include>WindowOpenForwards</include>
             </animation>
-            <animation type="WindowClose">
+            <animation type="WindowClose" condition="Window.Next(Home)">
                 <include>WindowCloseBackwards</include>
+            </animation>
+
+            <animation type="WindowOpen">
+                <include>WindowOpenBackwards</include>
+            </animation>
+            <animation type="WindowClose">
+                <include>WindowCloseForwards</include>
             </animation>
 
             <!-- Content -->
