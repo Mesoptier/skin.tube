@@ -73,7 +73,7 @@
 
                         <texture flipx="true">menu-next.png</texture>
 
-                        <animation type="Conditional" condition="!Container(3).OnPrevious" reversible="false">
+                        <animation type="Conditional" condition="!Control.HasFocus(155)" reversible="false">
                             <effect type="Slide" end="-4,0" time="50"/>
                             <effect type="Slide" end="4,0" time="250" delay="50" tween="cubic"/>
                         </animation>
@@ -94,7 +94,7 @@
 
                         <texture>menu-next.png</texture>
 
-                        <animation type="Conditional" condition="!Container(3).OnNext" reversible="false">
+                        <animation type="Conditional" condition="!Control.HasFocus(156)" reversible="false">
                             <effect type="Slide" end="4,0" time="50"/>
                             <effect type="Slide" end="-4,0" time="250" delay="50" tween="cubic"/>
                         </animation>
@@ -102,7 +102,6 @@
                 </control>
 
                 <!-- Settings -->
-
                 <control type="group">
                     <top>20</top>
                     <left>30</left>
