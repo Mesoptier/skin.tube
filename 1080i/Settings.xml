@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="4">
+    <defaultcontrol always="true">300</defaultcontrol>
+
+    <controls>
+        <include>GlobalBackground</include>
+        <include>GlobalTime</include>
+
+        <control type="group">
+            <include>ContentCommon</include>
+
+            <!-- Animations -->
+            <animation type="WindowOpen">
+                <include>WindowOpenForwards</include>
+            </animation>
+            <animation type="WindowClose">
+                <include>WindowCloseBackwards</include>
+            </animation>
+
+            <!-- Content -->
+            <control type="grouplist">
+                <include>DialogContents</include>
+
+                <!-- Title -->
+                <control type="label">
+                    <include>DialogTitle</include>
+                    <label>Settings</label>
+                </control>
+
+                <control type="list" id="300">
+                    <top>10</top>
+                    <width>420</width>
+                    <height>400</height>
+
+                    <itemlayout width="420" height="80">
+                        <control type="group">
+                            <top>10</top>
+                            <centerleft>50%</centerleft>
+                            <width>340</width>
+                            <height>60</height>
+
+                            <control type="image">
+                                <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                            </control>
+
+                            <control type="label">
+                                <left>50%</left>
+                                <top>13</top>
+
+                                <align>center</align>
+                                <font>MenuItemLabel</font>
+                                <textcolor>Primary</textcolor>
+
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </control>
+                    </itemlayout>
+
+                    <focusedlayout width="420" height="80">
+                        <control type="group">
+                            <top>10</top>
+                            <centerleft>50%</centerleft>
+                            <width>340</width>
+                            <height>60</height>
+
+                            <include>ActiveOverlay</include>
+
+                            <control type="image">
+                                <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                            </control>
+
+                            <control type="label">
+                                <left>50%</left>
+                                <top>13</top>
+
+                                <align>center</align>
+                                <font>MenuItemLabel</font>
+                                <textcolor>Primary</textcolor>
+
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </control>
+                    </focusedlayout>
+
+                    <content>
+                        <item>
+                            <label>Appearance</label>
+                            <onclick>ActivateWindow(AppearanceSettings)</onclick>
+                        </item>
+                        <item>
+                            <label>Video</label>
+                            <onclick>ActivateWindow(VideosSettings)</onclick>
+                        </item>
+                        <item>
+                            <label>Add-ons</label>
+                            <onclick>ActivateWindow(AddonBrowser)</onclick>
+                        </item>
+                        <item>
+                            <label>System</label>
+                            <onclick>ActivateWindow(SystemSettings)</onclick>
+                        </item>
+                        <item>
+                            <label>Skin</label>
+                            <onclick>ActivateWindow(SkinSettings)</onclick>
+                        </item>
+                    </content>
+                </control>
+
+            </control>
+        </control>
+
+    </controls>
+
+</window>

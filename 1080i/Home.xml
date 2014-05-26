@@ -47,6 +47,15 @@
                     <label>$INFO[Control.GetLabel(2)]</label>
                     <animation condition="!Control.HasFocus(2)" effect="Fade" time="50" start="100" end="40">Conditional</animation>
                 </control>
+                <control type="label">
+                    <width>auto</width>
+
+                    <font>WindowTitle</font>
+                    <textcolor>Primary</textcolor>
+
+                    <label>$INFO[Control.GetLabel(3)]</label>
+                    <animation condition="!Control.HasFocus(3)" effect="Fade" time="50" start="100" end="40">Conditional</animation>
+                </control>
 
             </control>
 
@@ -61,6 +70,10 @@
                 <control type="button" id="2">
                     <label>TV shows</label>
                     <onclick>ActivateWindow(Videos, TvShowTitles, return)</onclick>
+                </control>
+                <control type="button" id="3">
+                    <label>Settings</label>
+                    <onclick>ActivateWindow(Settings)</onclick>
                 </control>
             </control>
 
