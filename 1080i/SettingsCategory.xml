@@ -46,7 +46,7 @@
 
             <!-- Content -->
             <control type="grouplist">
-                <width>780</width>
+                <width>840</width>
                 <include>DialogContents</include>
 
                 <!-- Title -->
@@ -102,22 +102,43 @@
                 </control>
 
                 <!-- Settings -->
+
                 <control type="group">
+                    <top>20</top>
+                    <left>30</left>
+                    <width>780</width>
                     <height>480</height>
 
-                    <control type="grouplist" id="5">
-                        <top>20</top>
-                        <width>780</width>
-                        <height>480</height>
-
-                        <itemgap>10</itemgap>
-
+                    <control type="group">
                         <visible allowhiddenfocus="true">ControlGroup(5).HasFocus</visible>
                         <animation type="Visible">
                             <effect type="Fade" start="0" end="100" time="300" tween="cubic" easing="out" delay="150"/>
                         </animation>
+
+                        <control type="grouplist" id="5">
+                            <width>780</width>
+                            <height>480</height>
+
+                            <pagecontrol>121</pagecontrol>
+                            <itemgap>10</itemgap>
+                        </control>
+
+                        <control type="scrollbar" id="121">
+                            <right>-20</right>
+                            <height>480</height>
+
+                            <onleft>120</onleft>
+                            <onright>156</onright>
+
+                            <showonepage>false</showonepage>
+
+                            <texturesliderbackground colordiffuse="08FFFFFF">solid.png</texturesliderbackground>
+                            <texturesliderbar colordiffuse="22FFFFFF">solid.png</texturesliderbar>
+                        </control>
+
                     </control>
                 </control>
+
 
             </control>
 
