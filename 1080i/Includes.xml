@@ -6,6 +6,10 @@
     <include file="ViewTypes.xml"/>
 
     <include name="GlobalBackground">
+        <control type="image">
+            <texture colordiffuse="GlobalBackground">solid.png</texture>
+        </control>
+
         <control type="videowindow">
             <top>0</top>
             <bottom>0</bottom>
@@ -14,14 +18,21 @@
         </control>
 
         <control type="image">
-            <top>0</top>
-            <bottom>0</bottom>
-            <left>0</left>
-            <right>0</right>
+            <fadetime>200</fadetime>
+            <texture>$INFO[ListItem.Art(fanart)]</texture>
 
+            <animation effect="Fade" time="200" tween="cubic" easing="out">WindowOpen</animation>
+            <animation effect="Fade" time="50" tween="cubic" easing="in">WindowClose</animation>
+            <animation effect="Fade" time="200" tween="cubic" easing="out">Visible</animation>
+            <animation effect="Fade" time="50" tween="cubic" easing="in">Hidden</animation>
+
+            <visible>!Player.HasVideo</visible>
+        </control>
+
+        <control type="image">
             <texture colordiffuse="GlobalBackground">solid.png</texture>
 
-            <animation effect="Fade" condition="Player.HasVideo" start="100" end="98" time="50">Conditional</animation>
+            <animation effect="Fade" condition="True" end="97" time="0">Conditional</animation>
         </control>
     </include>
 
