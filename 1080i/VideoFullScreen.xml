@@ -5,7 +5,7 @@
 
         <!-- Overlay -->
         <control type="group" id="1">
-            <visible>Player.ShowInfo | Player.ShowTime | Player.Paused | Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding | Window.IsActive(VideoOSD)</visible>
+            <visible>Player.ShowInfo | Player.ShowTime | Player.Paused | Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding | Window.IsActive(VideoOSD) | Window.IsActive(SliderDialog)</visible>
 
             <animation effect="Fade" end="100" time="300" tween="cubic" easing="out">Visible</animation>
             <animation effect="Fade" end="0" time="150" delay="50" tween="cubic" easing="in">Hidden</animation>

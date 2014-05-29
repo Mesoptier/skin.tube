@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="145">
+    <controls>
+
+        <control type="group">
+            <top>50</top>
+            <centerleft>50%</centerleft>
+            <width>540</width>
+            <height>120</height>
+
+            <animation effect="Fade" end="100" time="300" tween="cubic" easing="out">WindowOpen</animation>
+            <animation effect="Fade" end="0" time="150" delay="50" tween="cubic" easing="in">WindowClose</animation>
+
+            <control type="label" id="10">
+                <top>12</top>
+                <left>20</left>
+
+                <font>MenuTitle</font>
+                <textcolor>Primary</textcolor>
+            </control>
+
+            <control type="label" id="12">
+                <top>12</top>
+                <right>20</right>
+
+                <align>right</align>
+
+                <font>MenuItemLabel</font>
+                <textcolor>Primary</textcolor>
+            </control>
+
+            <control type="slider" id="11">
+                <left>20</left>
+                <right>20</right>
+                <top>55</top>
+                <height>8</height>
+
+                <texturesliderbar colordiffuse="PlayerProgressBack">solid.png</texturesliderbar>
+                <textureslidernib colordiffuse="PlayerProgressBar">solid.png</textureslidernib>
+                <textureslidernibfocus colordiffuse="PlayerProgressBar">solid.png</textureslidernibfocus>
+            </control>
+        </control>
+
+    </controls>
+</window>
