@@ -12,7 +12,7 @@
             <control type="button" id="5"></control>
 
             <control type="grouplist" id="996">
-                <width>500</width>
+                <width>800</width>
                 <include>DialogContents</include>
 
                 <!-- Title -->
@@ -22,6 +22,7 @@
 
                 <!-- Options -->
                 <control type="group">
+                    <centerleft>50%</centerleft>
                     <top>10</top>
                     <width>420</width>
                     <height>480</height>
@@ -40,9 +41,6 @@
                     </control>
 
                     <control type="list" id="3">
-                        <width>420</width>
-                        <height>480</height>
-
                         <onleft>10</onleft>
                         <onright>10</onright>
                         <pagecontrol>10</pagecontrol>
@@ -144,15 +142,16 @@
 
                 <!-- Add-ons -->
                 <control type="group">
+                    <centerleft>50%</centerleft>
                     <top>10</top>
-                    <width>500</width>
-                    <height>480</height>
+                    <width>680</width>
+                    <height>560</height>
 
                     <visible>Control.IsVisible(6)</visible>
 
                     <control type="scrollbar" id="10">
+                        <height>540</height>
                         <top>10</top>
-                        <height>460</height>
                         <right>10</right>
 
                         <onleft>6</onleft>
@@ -162,22 +161,20 @@
                     </control>
 
                     <control type="list" id="6">
-                        <width>500</width>
-                        <height>480</height>
-
                         <onleft>10</onleft>
                         <onright>10</onright>
                         <pagecontrol>10</pagecontrol>
 
-                        <itemlayout height="120">
+                        <itemlayout height="140">
                             <control type="group">
                                 <left>40</left>
-                                <width>420</width>
+                                <width>600</width>
                                 <top>10</top>
-                                <height>100</height>
+                                <height>120</height>
 
                                 <control type="group">
-                                    <width>100</width>
+                                    <width>120</width>
+                                    <height>120</height>
 
                                     <include>DefaultImage</include>
 
@@ -189,40 +186,64 @@
                                 </control>
 
                                 <control type="group">
-                                    <left>100</left>
+                                    <left>120</left>
 
-                                    <control type="image">
-                                        <texture colordiffuse="BackgroundPrimary">solid.png</texture>
-                                    </control>
+                                    <control type="group">
+                                        <height>60</height>
 
-                                    <control type="label">
-                                        <top>12</top>
-                                        <left>20</left>
-                                        <right>20</right>
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                        </control>
 
-                                        <font>MenuItemValue</font>
-                                        <textcolor>Primary</textcolor>
-                                        <selectedcolor>Primary</selectedcolor>
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
 
-                                        <label>$INFO[ListItem.Label]</label>
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Primary</textcolor>
+                                            <selectedcolor>Primary</selectedcolor>
+
+                                            <label>$INFO[ListItem.Label]</label>
+                                        </control>
+
+                                        <control type="group">
+                                            <top>20</top>
+                                            <right>20</right>
+                                            <width>20</width>
+                                            <height>20</height>
+
+                                            <control type="image">
+                                                <visible>!ListItem.IsSelected</visible>
+                                                <texture colordiffuse="Secondary">icon-unwatched.png</texture>
+                                            </control>
+
+                                            <control type="image">
+                                                <visible>ListItem.IsSelected</visible>
+                                                <texture colordiffuse="Primary">icon-watched.png</texture>
+                                            </control>
+
+                                        </control>
                                     </control>
 
                                     <control type="group">
-                                        <top>20</top>
-                                        <right>20</right>
-                                        <width>20</width>
-                                        <height>20</height>
+                                        <top>60</top>
 
                                         <control type="image">
-                                            <visible>!ListItem.IsSelected</visible>
-                                            <texture colordiffuse="Secondary">icon-unwatched.png</texture>
+                                            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
                                         </control>
 
-                                        <control type="image">
-                                            <visible>ListItem.IsSelected</visible>
-                                            <texture colordiffuse="Primary">icon-watched.png</texture>
-                                        </control>
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
 
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Secondary</textcolor>
+                                            <selectedcolor>Secondary</selectedcolor>
+
+                                            <label>$INFO[ListItem.Property(Addon.Summary)]</label>
+                                        </control>
                                     </control>
 
                                 </control>
@@ -230,12 +251,12 @@
                             </control>
                         </itemlayout>
 
-                        <focusedlayout height="120">
+                        <focusedlayout height="140">
                             <control type="group">
                                 <left>40</left>
-                                <width>420</width>
+                                <width>600</width>
                                 <top>10</top>
-                                <height>100</height>
+                                <height>120</height>
 
                                 <control type="group">
                                     <visible>Control.HasFocus(6)</visible>
@@ -243,7 +264,8 @@
                                 </control>
 
                                 <control type="group">
-                                    <width>100</width>
+                                    <width>120</width>
+                                    <height>120</height>
 
                                     <include>DefaultImage</include>
 
@@ -255,40 +277,64 @@
                                 </control>
 
                                 <control type="group">
-                                    <left>100</left>
+                                    <left>120</left>
 
-                                    <control type="image">
-                                        <texture colordiffuse="BackgroundPrimary">solid.png</texture>
-                                    </control>
+                                    <control type="group">
+                                        <height>60</height>
 
-                                    <control type="label">
-                                        <top>12</top>
-                                        <left>20</left>
-                                        <right>20</right>
+                                        <control type="image">
+                                            <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                        </control>
 
-                                        <font>MenuItemValue</font>
-                                        <textcolor>Primary</textcolor>
-                                        <selectedcolor>Primary</selectedcolor>
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
 
-                                        <label>$INFO[ListItem.Label]</label>
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Primary</textcolor>
+                                            <selectedcolor>Primary</selectedcolor>
+
+                                            <label>$INFO[ListItem.Label]</label>
+                                        </control>
+
+                                        <control type="group">
+                                            <top>20</top>
+                                            <right>20</right>
+                                            <width>20</width>
+                                            <height>20</height>
+
+                                            <control type="image">
+                                                <visible>!ListItem.IsSelected</visible>
+                                                <texture colordiffuse="Secondary">icon-unwatched.png</texture>
+                                            </control>
+
+                                            <control type="image">
+                                                <visible>ListItem.IsSelected</visible>
+                                                <texture colordiffuse="Primary">icon-watched.png</texture>
+                                            </control>
+
+                                        </control>
                                     </control>
 
                                     <control type="group">
-                                        <top>20</top>
-                                        <right>20</right>
-                                        <width>20</width>
-                                        <height>20</height>
+                                        <top>60</top>
 
                                         <control type="image">
-                                            <visible>!ListItem.IsSelected</visible>
-                                            <texture colordiffuse="Secondary">icon-unwatched.png</texture>
+                                            <texture colordiffuse="BackgroundSecondary">solid.png</texture>
                                         </control>
 
-                                        <control type="image">
-                                            <visible>ListItem.IsSelected</visible>
-                                            <texture colordiffuse="Primary">icon-watched.png</texture>
-                                        </control>
+                                        <control type="label">
+                                            <top>12</top>
+                                            <left>20</left>
+                                            <right>20</right>
 
+                                            <font>MenuItemValue</font>
+                                            <textcolor>Secondary</textcolor>
+                                            <selectedcolor>Secondary</selectedcolor>
+
+                                            <label>$INFO[ListItem.Property(Addon.Summary)]</label>
+                                        </control>
                                     </control>
 
                                 </control>
