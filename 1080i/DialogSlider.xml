@@ -3,17 +3,16 @@
     <controls>
 
         <control type="group">
-            <top>50</top>
+            <top>62</top> <!-- 125 - 63  -->
             <centerleft>50%</centerleft>
             <width>540</width>
-            <height>120</height>
+            <height>63</height>
 
             <animation effect="Fade" end="100" time="300" tween="cubic" easing="out">WindowOpen</animation>
             <animation effect="Fade" end="0" time="150" delay="50" tween="cubic" easing="in">WindowClose</animation>
 
             <control type="label" id="10">
                 <top>12</top>
-                <left>20</left>
 
                 <font>MenuTitle</font>
                 <textcolor>Primary</textcolor>
@@ -21,7 +20,6 @@
 
             <control type="label" id="12">
                 <top>12</top>
-                <right>20</right>
 
                 <align>right</align>
 
@@ -30,15 +28,14 @@
             </control>
 
             <control type="slider" id="11">
-                <left>20</left>
-                <right>20</right>
-                <top>55</top>
-                <height>8</height>
+                <top>49</top> <!-- 55 - (20 - 8) / 2 -->
+                <height>20</height>
 
-                <texturesliderbar colordiffuse="PlayerProgressBack">solid.png</texturesliderbar>
-                <textureslidernib colordiffuse="PlayerProgressBar">solid.png</textureslidernib>
-                <textureslidernibfocus colordiffuse="PlayerProgressBar">solid.png</textureslidernibfocus>
+                <texturesliderbar colordiffuse="PlayerProgressBack">slider-nib.png</texturesliderbar>
+                <textureslidernib colordiffuse="PlayerProgressBar">slider-nib.png</textureslidernib>
+                <textureslidernibfocus colordiffuse="PlayerProgressBar">slider-nib.png</textureslidernibfocus>
             </control>
+
         </control>
 
     </controls>
