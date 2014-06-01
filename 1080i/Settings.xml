@@ -26,6 +26,7 @@
 
             <!-- Content -->
             <control type="grouplist">
+                <width>1080</width>
                 <include>DialogContents</include>
 
                 <!-- Title -->
@@ -35,11 +36,12 @@
                 </control>
 
                 <control type="list" id="300">
+                    <centerleft>50%</centerleft>
                     <top>10</top>
-                    <width>420</width>
-                    <height>400</height>
+                    <width>360</width>
+                    <height>480</height>
 
-                    <itemlayout width="420" height="80">
+                    <itemlayout width="360" height="80">
                         <control type="group">
                             <top>10</top>
                             <centerleft>50%</centerleft>
@@ -63,7 +65,7 @@
                         </control>
                     </itemlayout>
 
-                    <focusedlayout width="420" height="80">
+                    <focusedlayout width="360" height="80">
                         <control type="group">
                             <top>10</top>
                             <centerleft>50%</centerleft>
@@ -95,9 +97,17 @@
                             <onclick>ActivateWindow(AppearanceSettings)</onclick>
                         </item>
                         <item>
+                            <label>Skin</label>
+                            <onclick>ActivateWindow(SkinSettings)</onclick>
+                        </item>
+                        <item>
                             <label>Video</label>
                             <onclick>ActivateWindow(VideosSettings)</onclick>
                         </item>
+                        <!--<item>
+                            <label>Music</label>
+                            <onclick>ActivateWindow(MusicSettings)</onclick>
+                        </item>-->
                         <item>
                             <label>Add-ons</label>
                             <onclick>ActivateWindow(AddonBrowser)</onclick>
@@ -107,8 +117,8 @@
                             <onclick>ActivateWindow(SystemSettings)</onclick>
                         </item>
                         <item>
-                            <label>Skin</label>
-                            <onclick>ActivateWindow(SkinSettings)</onclick>
+                            <label>Services</label>
+                            <onclick>ActivateWindow(ServiceSettings)</onclick>
                         </item>
                     </content>
                 </control>
