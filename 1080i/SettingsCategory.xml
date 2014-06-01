@@ -223,6 +223,21 @@
             <control type="edit" id="12">
                 <onleft>155</onleft>
                 <onright>156</onright>
+
+                <height>60</height>
+
+                <textoffsetx>20</textoffsetx>
+                <textoffsety>13</textoffsety>
+
+                <font>MenuItemLabel</font>
+
+                <textcolor>Secondary</textcolor>
+                <focusedcolor>Primary</focusedcolor>
+                <disabledcolor>Disabled</disabledcolor>
+                <invalidcolor>Tertiary</invalidcolor>
+
+                <texturenofocus colordiffuse="BackgroundSecondary">solid.png</texturenofocus>
+                <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
             </control>
 
             <control type="textbox" id="6"></control>
