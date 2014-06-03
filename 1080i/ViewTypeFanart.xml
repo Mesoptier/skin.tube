@@ -211,7 +211,7 @@
 
                 <include>ViewTypeHorizontal</include>
 
-                <viewtype label="Fanart">wide</viewtype>
+                <viewtype label="Landscape">bigwide</viewtype>
                 <visible>Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)</visible>
 
                 <itemlayout width="435" height="425">
@@ -235,7 +235,6 @@
             <include>ViewScrollbarHorizontal</include>
 
         </control>
-
     </include>
 
 </includes>

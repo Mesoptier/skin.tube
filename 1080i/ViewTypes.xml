@@ -4,6 +4,7 @@
     <include file="ViewTypeList.xml"/>
     <include file="ViewTypePoster.xml"/>
     <include file="ViewTypeFanart.xml"/>
+    <include file="ViewTypeFanartSmall.xml"/>
 
     <!-- Details -->
     <variable name="ViewItemDetail">
