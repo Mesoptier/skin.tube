@@ -6,7 +6,7 @@
         <value condition="Window.IsActive(VideoLibrary) + Container.Content(Movies) + SubString(Container.FolderPath, setid)">$INFO[Container.FolderName]</value>
         <value condition="Window.IsActive(VideoLibrary) + Container.Content(Movies)">Movies</value>
         <value condition="Window.IsActive(VideoLibrary) + Container.Content(TvShows)">TV shows</value>
-        <value condition="Window.IsActive(VideoLibrary) + [Container.Content(Seasons) | Container.Content(Episodes)]">$INFO[ListItem.TVShowTitle]</value>
+        <value condition="Window.IsActive(VideoLibrary) + [Container.Content(Seasons) | Container.Content(Episodes)]">$INFO[ListItem.TvShowTitle]</value>
         <value>$INFO[Container.FolderName]</value>
     </variable>
     
@@ -38,6 +38,26 @@
     <variable name="PlayerDuration">
         <value condition="StringCompare(VideoPlayer.Duration(h), 0)">$INFO[VideoPlayer.Duration(mm:ss)]</value>
         <value>$INFO[VideoPlayer.Duration(h:mm:ss)]</value>
+    </variable>
+
+    <!-- Info -->
+    <variable name="InfoTitle">
+        <value condition="Container.Content(Episodes)">$INFO[ListItem.TvShowTitle]</value>
+        <value>$INFO[ListItem.Title]</value>
+    </variable>
+
+    <variable name="InfoDetail">
+        <value>$VAR[ViewItemDetail]</value>
+    </variable>
+
+    <variable name="InfoDetailPrimary">
+        <value condition="Container.Content(Episodes)">$INFO[ListItem.Title]</value>
+        <value condition="Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Seasons)">$INFO[ListItem.Genre]</value>
+        <value>$INFO[ListItem.Label2]</value>
+    </variable>
+
+    <variable name="InfoDetail2">
+        <value>$INFO[ListItem.Rating]</value>
     </variable>
 
 </includes>

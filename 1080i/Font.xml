@@ -15,13 +15,11 @@
             <filename>Roboto-Medium.ttf</filename>
             <size>48</size>
         </font>
-
         <font>
             <name>WindowTitleSecondary</name>
             <filename>Roboto-Medium.ttf</filename>
             <size>32</size>
         </font>
-
         <font>
             <name>WindowTitleTertiary</name>
             <filename>Roboto-Medium.ttf</filename>
@@ -33,19 +31,16 @@
             <filename>Roboto-Medium.ttf</filename>
             <size>24</size>
         </font>
-
         <font>
             <name>ItemTitleSecondary</name>
             <filename>RobotoCondensed-Regular.ttf</filename>
             <size>24</size>
         </font>
-
         <font>
             <name>ItemDescription</name>
             <filename>Roboto-Medium.ttf</filename>
             <size>18</size>
         </font>
-
         <font>
             <name>ItemTag</name>
             <filename>Roboto-Bold.ttf</filename>
@@ -93,6 +88,41 @@
             <filename>Roboto-Medium.ttf</filename>
             <size>20</size>
         </font>
+
+        <!-- Info -->
+        <font>
+            <name>InfoPrimaryDetail</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>26</size>
+        </font>
+        <font>
+            <name>InfoPrimaryDetailSecondary</name> <!-- Don't judge my brilliant naming scheme... -->
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>26</size>
+        </font>
+        <font>
+            <name>InfoDescription</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>22</size>
+        </font>
+        <font>
+            <name>InfoTag</name>
+            <filename>Roboto-Bold.ttf</filename>
+            <size>28</size>
+            <style>uppercase</style>
+        </font>
+        <font>
+            <name>InfoSecondaryDetail</name>
+            <filename>Roboto-Medium.ttf</filename>
+            <size>22</size>
+        </font>
+        <font>
+            <name>InfoSecondaryDetailLabel</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>22</size>
+            <style>uppercase</style>
+        </font>
+
 
     </fontset>
 </fonts>

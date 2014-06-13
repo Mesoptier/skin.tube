@@ -32,7 +32,7 @@
         <control type="image">
             <texture colordiffuse="GlobalBackground">solid.png</texture>
 
-            <animation effect="Fade" condition="True" end="97" time="0">Conditional</animation>
+            <animation effect="Fade" condition="True" end="99" time="0">Conditional</animation>
         </control>
     </include>
 
@@ -250,4 +250,56 @@
         <effect type="Fade" start="100" end="25" time="0"/>
     </include>
 
+    <!-- Info Cast Item -->
+    <include name="DefaultCastImage">
+        <include>DefaultImage</include>
+    </include>
+
+    <include name="InfoCastItem">
+        <top>10</top>
+        <bottom>10</bottom>
+        <left>10</left>
+        <right>10</right>
+
+        <control type="group">
+            <bottom>55</bottom>
+
+            <include>DefaultCastImage</include>
+
+            <!-- Poster -->
+            <control type="image">
+                <fadetime>200</fadetime>
+                <aspectratio aligny="top">scale</aspectratio>
+                <texture>$INFO[ListItem.Icon]</texture>
+            </control>
+
+            <include>ImageOverlay</include>
+        </control>
+
+        <control type="group">
+            <height>55</height>
+            <bottom>0</bottom>
+
+            <control type="image">
+                <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+            </control>
+
+            <control type="group">
+                <top>11</top>
+                <left>20</left>
+                <right>20</right>
+
+                <control type="label">
+                    <left>0</left>
+                    <right>0</right>
+
+                    <font>ItemTitle</font>
+                    <textcolor>Primary</textcolor>
+                    <selectedcolor>Primary</selectedcolor>
+
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </control>
+    </include>
 </includes>

@@ -130,7 +130,8 @@
 
         <!-- Spoiler tag -->
         <control type="label">
-            <top>44</top>
+            <height>32</height>
+            <centertop>50%</centertop>
             <left>50%</left>
 
             <visible>SubString(ListItem.Plot,$LOCALIZE[20370]) + !SubString(ListItem.Path, setid)</visible>

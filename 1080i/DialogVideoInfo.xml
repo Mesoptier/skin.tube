@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="2003" type="dialog">
+    <defaultcontrol always="true">300</defaultcontrol>
+    <onload>Control.SetFocus(300,0)</onload>
+
     <controls>
+
+        <control type="button" id="6"></control>
+        <control type="button" id="8"></control>
+        <control type="button" id="10"></control>
+        <control type="button" id="11"></control>
 
         <!-- Title -->
         <control type="label">
@@ -11,7 +19,7 @@
             <textcolor>Primary</textcolor>
             <font>WindowTitle</font>
 
-            <label>$INFO[ListItem.Title]</label>
+            <label>$VAR[InfoTitle]</label>
 
             <animation type="WindowOpen">
                 <effect type="Fade" start="0" end="100" time="300" tween="cubic" delay="150"/>
@@ -23,6 +31,7 @@
 
         <!-- Content -->
         <control type="group">
+            <include>ContentCommon</include>
 
             <!-- Animations -->
             <animation type="WindowOpen">
@@ -32,136 +41,377 @@
                 <include>WindowCloseBackwards</include>
             </animation>
 
-            <control type="image">
+            <!-- Content -->
+            <control type="group">
                 <top>160</top>
                 <bottom>90</bottom>
                 <left>100</left>
                 <right>100</right>
 
-                <texture>solid.png</texture>
-            </control>
+                <!-- Information -->
+                <control type="group">
+                    <left>0</left>
+                    <width>850</width>
 
-            <!-- Menu overlay -->
-            <control type="image">
-                <include>FillParent</include>
+                    <!-- Buttons -->
+                    <control type="list" id="300">
+                        <top>-10</top>
+                        <left>-10</left>
+                        <width>320</width>
+                        <height>320</height>
 
-                <texture colordiffuse="GlobalBackground">solid.png</texture>
+                        <onup>-</onup>
+                        <ondown>304</ondown>
+                        <onright>400</onright>
 
-                <animation effect="Fade" start="0" end="99" time="200" tween="cubic" easing="out">Visible</animation>
-                <animation effect="Fade" start="99" end="0" time="150" delay="50" tween="cubic" easing="in">Hidden</animation>
+                        <itemlayout width="320" height="80">
+                            <control type="group">
+                                <top>10</top>
+                                <left>10</left>
+                                <width>300</width>
+                                <height>60</height>
 
-                <visible>ControlGroup(3000).HasFocus</visible>
-            </control>
+                                <control type="image">
+                                    <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                </control>
 
-            <!-- View options -->
-            <control type="group" id="3000">
-                <visible allowhiddenfocus="true">ControlGroup(3000).HasFocus</visible>
+                                <control type="label">
+                                    <top>13</top>
+                                    <left>50%</left>
+                                    <align>center</align>
 
-                <animation type="Visible">
-                    <include>WindowOpenForwards</include>
-                </animation>
-                <animation type="Hidden">
-                    <include>WindowCloseBackwards</include>
-                </animation>
+                                    <font>MenuItemLabel</font>
+                                    <textcolor>Primary</textcolor>
 
-                <control type="button" id="3002">
-                    <onfocus condition="Control.IsVisible(3000)">Control.SetFocus(500)</onfocus>
-                    <onfocus condition="!Control.IsVisible(3000)">Control.SetFocus(3001)</onfocus>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </control>
+                        </itemlayout>
+
+                        <focusedlayout width="320" height="80">
+                            <control type="group">
+                                <top>10</top>
+                                <left>10</left>
+                                <width>300</width>
+                                <height>60</height>
+
+                                <control type="group">
+                                    <visible>Control.HasFocus(300)</visible>
+                                    <include>ActiveOverlay</include>
+                                </control>
+
+                                <control type="image">
+                                    <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                                </control>
+
+                                <control type="label">
+                                    <top>13</top>
+                                    <left>50%</left>
+                                    <align>center</align>
+
+                                    <font>MenuItemLabel</font>
+                                    <textcolor>Primary</textcolor>
+
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </control>
+                        </focusedlayout>
+
+                        <content>
+                            <item id="1">
+                                <label>Play</label>
+                                <onclick>SendClick(2003,8)</onclick>
+                            </item>
+                            <item id="2">
+                                <label>Trailer</label>
+                                <onclick>SendClick(2003,11)</onclick>
+                                <visible>!IsEmpty(ListItem.Trailer)</visible>
+                            </item>
+                            <item id="3">
+                                <label>Get Artwork</label>
+                                <onclick>SendClick(2003,10)</onclick>
+                                <visible>Container.Content(Movies) | Container.Content(TvShows)</visible>
+                            </item>
+                            <item id="5">
+                                <label>Refresh</label>
+                                <onclick>SendClick(2003,6)</onclick>
+                            </item>
+                        </content>
+                    </control>
+
+                    <!-- Fanart -->
+                    <control type="group">
+                        <right>0</right>
+                        <width>530</width>
+                        <height>300</height>
+
+                        <include>DefaultImage</include>
+
+                        <control type="image">
+                            <texture>$VAR[ViewTypeFanartImage]</texture>
+                        </control>
+
+                        <include>ImageOverlay</include>
+                        <include>ItemBadge</include>
+                    </control>
+
+                    <!-- Overview -->
+                    <control type="group">
+                        <top>320</top>
+
+                        <!-- Primary details -->
+                        <control type="group">
+                            <height>70</height>
+
+                            <control type="image">
+                                <texture colordiffuse="BackgroundPrimary">solid.png</texture>
+                            </control>
+
+                            <control type="group">
+                                <top>16</top>
+                                <left>20</left>
+                                <right>20</right>
+
+                                <!-- Left details -->
+                                <control type="grouplist">
+                                    <orientation>horizontal</orientation>
+                                    <itemgap>20</itemgap>
+
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoPrimaryDetailSecondary</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>$VAR[InfoDetail]</label>
+                                    </control>
+
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoPrimaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$VAR[InfoDetailPrimary]</label>
+                                    </control>
+                                </control>
+
+                                <!-- Right detail -->
+                                <control type="label">
+                                    <align>right</align>
+
+                                    <font>InfoPrimaryDetailSecondary</font>
+                                    <textcolor>Secondary</textcolor>
+
+                                    <label>$VAR[InfoDetail2]</label>
+                                </control>
+                            </control>
+                        </control>
+
+                        <!-- Plot -->
+                        <control type="group">
+                            <top>70</top>
+                            <height>370</height>
+
+                            <control type="image">
+                                <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+                            </control>
+
+                            <!-- Spoiler tag -->
+                            <control type="label">
+                                <height>42</height>
+                                <centertop>50%</centertop>
+                                <left>0</left>
+
+                                <visible>SubString(ListItem.Plot,$LOCALIZE[20370])</visible>
+
+                                <align>center</align>
+                                <textcolor>Tertiary</textcolor>
+                                <font>InfoTag</font>
+
+                                <label>Spoiler</label>
+                            </control>
+
+                            <!-- Plot -->
+                            <control type="textbox" id="304">
+                                <top>-20</top>
+                                <bottom>8</bottom>
+                                <left>20</left>
+                                <right>20</right>
+
+                                <visible>![SubString(ListItem.Plot,$LOCALIZE[20370])]</visible>
+
+                                <textcolor>Secondary</textcolor>
+                                <font>InfoDescription</font>
+
+                                <label>[CR]$INFO[ListItem.Plot]</label>
+                            </control>
+                        </control>
+
+                        <!-- Secondary details -->
+                        <control type="group">
+                            <height>55</height>
+                            <bottom>0</bottom>
+
+                            <control type="image">
+                                <texture colordiffuse="BackgroundSecondary">solid.png</texture>
+                            </control>
+
+                            <control type="group">
+                                <top>12</top>
+                                <left>20</left>
+                                <right>20</right>
+
+                                <!-- Left details -->
+                                <control type="grouplist">
+                                    <left>-20</left>
+                                    <orientation>horizontal</orientation>
+                                    <itemgap>10</itemgap>
+                                    <usecontrolcoords>true</usecontrolcoords>
+
+                                    <!-- Network -->
+                                    <control type="label">
+                                        <left>20</left>
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetailLabel</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>Network</label>
+                                        <visible>!IsEmpty(ListItem.Studio)</visible>
+                                    </control>
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$INFO[ListItem.Studio]</label>
+                                        <visible>!IsEmpty(ListItem.Studio)</visible>
+                                    </control>
+
+                                    <!-- Seasons -->
+                                    <control type="label">
+                                        <left>20</left>
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetailLabel</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>Seasons</label>
+                                        <visible>Container.Content(TvShows)</visible>
+                                    </control>
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$INFO[ListItem.Property(TotalSeasons)]</label>
+                                        <visible>Container.Content(TvShows)</visible>
+                                    </control>
+
+                                    <!-- Episodes -->
+                                    <control type="label">
+                                        <left>20</left>
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetailLabel</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>Episodes</label>
+                                        <visible>Container.Content(TvShows)</visible>
+                                    </control>
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$INFO[ListItem.Property(WatchedEpisodes)] [COLOR=Secondary]/[/COLOR] $INFO[ListItem.Property(TotalEpisodes)]</label>
+                                        <visible>Container.Content(TvShows)</visible>
+                                    </control>
+
+                                    <!-- Duration -->
+                                    <control type="label">
+                                        <left>20</left>
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetailLabel</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>Duration</label>
+                                        <visible>!IsEmpty(ListItem.Duration)</visible>
+                                    </control>
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$INFO[ListItem.Duration] min</label>
+                                        <visible>!IsEmpty(ListItem.Duration)</visible>
+                                    </control>
+
+                                    <!-- Resolution -->
+                                    <control type="label">
+                                        <left>20</left>
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetailLabel</font>
+                                        <textcolor>Secondary</textcolor>
+
+                                        <label>Resolution</label>
+                                        <visible>!IsEmpty(ListItem.VideoResolution)</visible>
+                                    </control>
+                                    <control type="label">
+                                        <width>auto</width>
+
+                                        <font>InfoSecondaryDetail</font>
+                                        <textcolor>Primary</textcolor>
+
+                                        <label>$INFO[ListItem.VideoResolution]</label>
+                                        <visible>!IsEmpty(ListItem.VideoResolution)</visible>
+                                    </control>
+
+                                </control>
+                            </control>
+                        </control>
+                    </control>
                 </control>
 
-                <!-- Controls -->
-                <control type="grouplist" id="3001">
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <width>420</width>
-                    <align>center</align>
+                <!-- Cast -->
+                <control type="group" id="400">
+                    <right>0</right>
+                    <width>850</width>
 
-                    <itemgap>0</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
+                    <defaultcontrol>50</defaultcontrol>
 
-                    <!-- Title -->
-                    <control type="label">
-                        <height>30</height>
+                    <control type="panel" id="50">
+                        <top>-10</top>
+                        <bottom>-10</bottom>
+                        <left>-10</left>
+                        <right>-10</right>
 
-                        <font>MenuTitle</font>
-                        <textcolor>Primary</textcolor>
+                        <onleft>300</onleft>
+                        <onright>-</onright>
 
-                        <align>center</align>
+                        <itemlayout width="290" height="425">
+                            <control type="group">
+                                <include>InfoCastItem</include>
+                            </control>
+                        </itemlayout>
 
-                        <label>$INFO[ListItem.Label]</label>
-                    </control>
+                        <focusedlayout width="290" height="425">
+                            <control type="group">
+                                <!-- Active overlay -->
+                                <include>ActiveOverlay</include>
 
-                    <!-- Play -->
-                    <control type="group" id="3010">
-                        <top>20</top>
-                        <centerleft>50%</centerleft>
-                        <width>340</width>
-                        <height>60</height>
-
-                        <control type="group">
-                            <visible>ControlGroup(3010).HasFocus</visible>
-                            
-                            <animation type="Visible" reversible="false">
-                                <include>ActiveOverlayAnimation</include>
-                            </animation>
-
-                            <include>ActiveOverlay</include>
-                        </control>
-
-                        <!-- Button -->
-                        <control type="button" id="8">
-                            <onup>3002</onup>
-                            <ondown>3020</ondown>
-
-                            <align>center</align>
-                            <textoffsety>13</textoffsety>
-
-                            <font>MenuItemLabel</font>
-                            <textcolor>Primary</textcolor>
-
-                            <texturenofocus colordiffuse="BackgroundPrimary">solid.png</texturenofocus>
-                            <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
-
-                            <label>Play</label>
-                        </control>
-                    </control>
-
-                    <!-- Choose art -->
-                    <control type="group" id="3020">
-                        <top>20</top>
-                        <centerleft>50%</centerleft>
-                        <width>340</width>
-                        <height>60</height>
-
-                        <control type="group">
-                            <visible>ControlGroup(3020).HasFocus</visible>
-                            
-                            <animation type="Visible" reversible="false">
-                                <include>ActiveOverlayAnimation</include>
-                            </animation>
-
-                            <include>ActiveOverlay</include>
-                        </control>
-
-                        <!-- Button -->
-                        <control type="button" id="10">
-                            <onup>3010</onup>
-                            <ondown>3030</ondown>
-
-                            <align>center</align>
-                            <textoffsety>13</textoffsety>
-
-                            <font>MenuItemLabel</font>
-                            <textcolor>Primary</textcolor>
-
-                            <texturenofocus colordiffuse="BackgroundPrimary">solid.png</texturenofocus>
-                            <texturefocus colordiffuse="BackgroundPrimary">solid.png</texturefocus>
-
-                            <label>Choose art</label>
-                        </control>
+                                <include>InfoCastItem</include>
+                            </control>
+                        </focusedlayout>
                     </control>
                 </control>
-            
             </control>
 
         </control>
