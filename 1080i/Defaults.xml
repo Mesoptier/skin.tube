@@ -3,7 +3,7 @@
     
     <default type="label">
         <scrollspeed>40</scrollspeed>
-        <scrollsuffix> - </scrollsuffix>
+        <scrollsuffix>  -  </scrollsuffix>
     </default>
 
     <default type="button">
