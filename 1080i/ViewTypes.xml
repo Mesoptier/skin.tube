@@ -15,9 +15,9 @@
     </variable>
 
     <variable name="ViewItemDetail2">
-        <!-- <value condition="Container.Content(Seasons)">$INFO[ListItem.Property(WatchedEpisodes)] [COLOR Tertiary]/[/COLOR] $INFO[ListItem.Property(TotalEpisodes)]</value> -->
-        <value condition="Container.Content(Seasons)">$INFO[ListItem.Property(TotalEpisodes)] EPISODES</value>
-        <value condition="Container.Content(Movies) | Container.Content(TvShows) | Container.Content(Episodes)">$INFO[ListItem.Rating]</value>
+        <value condition="[Container.Content(TvShows) | Container.Content(Seasons)] + IntegerGreaterThan(ListItem.Property(UnWatchedEpisodes), 0)">$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
+        <!--<value condition="Container.Content(TvShows) | Container.Content(Seasons)">[COLOR Disabled]$INFO[ListItem.Property(UnWatchedEpisodes)][/COLOR]</value>-->
+        <value condition="Container.Content(Movies) | Container.Content(Episodes)">$INFO[ListItem.Rating]</value>
     </variable>
 
     <!-- Title -->
@@ -44,6 +44,10 @@
             <texture border="10">active-overlay.png</texture>
             
             <animation type="Focus" reversible="false">
+                <include>ActiveOverlayAnimation</include>
+            </animation>
+
+            <animation type="Visible" reversible="false">
                 <include>ActiveOverlayAnimation</include>
             </animation>
         </control>
