@@ -7,7 +7,8 @@
         <value condition="Window.IsActive(VideoLibrary) + Container.Content(Movies)">Movies</value>
         <value condition="Window.IsActive(VideoLibrary) + Container.Content(TvShows)">TV shows</value>
         <value condition="Window.IsActive(VideoLibrary) + [Container.Content(Seasons) | Container.Content(Episodes)]">$INFO[ListItem.TvShowTitle]</value>
-        <value>$INFO[Container.FolderName]</value>
+        <value condition="!IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
+        <value>&lt; no name &gt;</value>
     </variable>
     
     <!-- Secondary title -->
